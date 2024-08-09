@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="content mt-3" th:fragment="add-category">
+        <form action="/admin/category/add" th:object="${category}" method="post">
+            <div class="form-group">
+                <label>Category</label>
+                <input class="form-control" th:field="*{name}" placeholder="Please Enter Category name" />
+                <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+            <button type="submit" style="border-radius: 4px" class="btn btn-default btn-success">Add Category</button>
+            <button type="reset" class="btn btn-default btn-primary">Reset</button>
+        </form>
+
+    </div>
+</body>
+</html>
