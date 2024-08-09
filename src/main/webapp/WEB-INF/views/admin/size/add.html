@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Size</title>
+</head>
+<body>
+<div class="content mt-3" th:fragment="add-size">
+    <form action="/admin/size/add" th:object="${size}" method="post">
+        <div class="form-group">
+            <label>Size Name</label>
+            <input class="form-control" th:field="*{name}" placeholder="Please Enter Size name" />
+            <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <button type="submit" style="border-radius: 4px" class="btn btn-default btn-success">Add Size</button>
+        <button type="reset" class="btn btn-default btn-primary">Reset</button>
+    </form>
+
+</div>
+</body>
+</html>

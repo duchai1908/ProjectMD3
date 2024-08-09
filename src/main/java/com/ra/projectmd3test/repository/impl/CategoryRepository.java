@@ -18,7 +18,7 @@ public class CategoryRepository implements ICategoryRepository {
     public List<Category> findAll() {
         Session session = sessionFactory.openSession();
         try{
-            return session.createQuery("from Category",Category.class).list();
+            return session.createQuery("from Category order by id",Category.class).list();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -29,6 +29,17 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public Category findById(Integer id) {
+        Session session = sessionFactory.openSession();
+        try{
+            Category category = session.get(Category.class, id);
+            if(category != null){
+                return category;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
         return null;
     }
 
@@ -56,6 +67,19 @@ public class CategoryRepository implements ICategoryRepository {
 
     @Override
     public void deleteById(Integer t) {
-
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        try{
+            Category category = session.get(Category.class, t);
+            if(category != null){
+                session.delete(category);
+            }
+            transaction.commit();
+        }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
     }
 }

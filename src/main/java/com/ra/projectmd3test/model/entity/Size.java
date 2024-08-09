@@ -14,15 +14,16 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-public class Category {
+public class Size {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="size_id")
     private Integer id;
-    @Column(name="category_name",length = 100)
-    @NotBlank(message = "Category name can't be null")
+    @NotBlank(message = "Size name can't be null")
+    @Column(name = "size_name")
     private String name;
-    @Column(name="created_at")
+    @Column(name = "created_at")
     private Date createdAt;
-    @Column(name="updated_at")
+    @Column(name = "updated_at")
     private Date updatedAt;
 }

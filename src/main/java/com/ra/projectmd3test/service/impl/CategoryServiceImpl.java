@@ -17,7 +17,7 @@ public class CategoryServiceImpl implements ICategoryService {
     }
     @Override
     public Category findById(Integer id) {
-        return null;
+        return categoryRepository.findById(id);
     }
 
     @Override
@@ -27,6 +27,6 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Override
     public void deleteById(Integer t) {
-
+        categoryRepository.deleteById(t);
     }
 }

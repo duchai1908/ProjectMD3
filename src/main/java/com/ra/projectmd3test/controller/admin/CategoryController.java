@@ -4,13 +4,11 @@ import com.google.common.net.MediaType;
 import com.ra.projectmd3test.model.entity.Category;
 import com.ra.projectmd3test.service.design.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,6 +22,7 @@ public class CategoryController{
         model.addAttribute("viewName","list-category");
         model.addAttribute("portfolio","Category");
         model.addAttribute("action","List");
+        model.addAttribute("category",new Category());
         model.addAttribute("listCate",categoryService.findAll());
         return "admin/dashboard";
     }
@@ -47,5 +46,30 @@ public class CategoryController{
             categoryService.save(category);
             return "redirect:/admin/category/list";
         }
+    }
+    @PostMapping("/update")
+    public String update(@Valid @ModelAttribute("category") Category category, BindingResult bindingResult, Model model, @RequestParam("adminId") Integer adminId){
+        if(bindingResult.hasErrors()){
+            model.addAttribute("category",category);
+            model.addAttribute("viewName","list-category");
+            model.addAttribute("portfolio","Category");
+            model.addAttribute("action","List");
+            return "admin/dashboard";
+        }else {
+            Category newCategory = categoryService.findById(adminId);
+            newCategory.setName(category.getName());
+            categoryService.save(newCategory);
+            return "redirect:/admin/category/list";
+        }
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteCategory(@PathVariable("id") Integer id){
+        categoryService.deleteById(id);
+        return ResponseEntity.ok("Category deleted successfully");
+//        if (isDeleted) {
+//            return ResponseEntity.ok("Category deleted successfully");
+//        } else {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category not found");
+//        }
     }
 }
