@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @NoArgsConstructor
@@ -14,11 +16,14 @@ import java.util.List;
 @Getter
 @Setter
 public class ProductDetailRequest {
-   @Min(value=1, message = "Price must be greater or equal than 1")
+   @Min(value=0, message = "Price must be greater or equal than 0")
+   @NotNull(message = "Price can't be null")
     private Double price;
+   @NotNull(message = "Quantity can't be null")
     private Integer quantity;
-    private List<MultipartFile> image;
-    private Integer sizeId;
-    private Integer colorId;
-    private Integer productId;
+    @NotNull(message = "Size cant be null")
+    private Integer size;
+    @NotNull(message = "Color cant be null")
+    private Integer color;
+    private Integer product;
 }

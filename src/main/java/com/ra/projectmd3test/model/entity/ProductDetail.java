@@ -1,10 +1,8 @@
 package com.ra.projectmd3test.model.entity;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +14,10 @@ public class ProductDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name="price")
     private Double price;
+    @Column(name="quantity")
     private Integer quantity;
-    private String image;
     @ManyToOne
     @JoinColumn(name="size_id")
     private Size size;

@@ -22,8 +22,8 @@
                 </tr>
                 </thead>
                 <tbody id="list-admin">
-                    <tr th:each="product, iterStat : ${listProduct}" th:id="'row-' + ${product.id}" >
-                        <td th:text="${iterStat.index+1}"></td>
+                    <tr th:each="product,loop : ${listProduct}" th:id="'row-' + ${product.id}" >
+                        <td th:text="${currentPage * size + loop.count }"></td>
                         <td><a href="" th:text="${product.name}"></a></td>
                         <td><img th:src="${product.mainImage}" width="100px" height="100px" style="object-fit: cover" alt="Fail"></td>
                         <td th:text="${product.category.name}"></td>
