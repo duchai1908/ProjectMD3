@@ -1,7 +1,7 @@
 package com.ra.projectmd3test.repository.impl;
 
-import com.ra.projectmd3test.model.entity.Category;
-import com.ra.projectmd3test.repository.design.ICategoryRepository;
+import com.ra.projectmd3test.model.entity.Color;
+import com.ra.projectmd3test.repository.design.IColorRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,15 +10,16 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+
 @Repository
-public class CategoryRepository implements ICategoryRepository {
+public class ColorRepository implements IColorRepository {
     @Autowired
     private SessionFactory sessionFactory;
     @Override
-    public List<Category> findAll() {
+    public List<Color> findAll() {
         Session session = sessionFactory.openSession();
         try{
-            return session.createQuery("from Category",Category.class).list();
+            return session.createQuery("from Color order by id",Color.class).list();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -28,12 +29,12 @@ public class CategoryRepository implements ICategoryRepository {
     }
 
     @Override
-    public Category findById(Integer id) {
+    public Color findById(Integer id) {
         Session session = sessionFactory.openSession();
         try{
-            Category category = session.get(Category.class, id);
-            if(category != null){
-                return category;
+            Color color = session.get(Color.class, id);
+            if(color != null){
+                return color;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -44,21 +45,21 @@ public class CategoryRepository implements ICategoryRepository {
     }
 
     @Override
-    public void save(Category category) {
+    public void save(Color color) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            if (category.getId() == null) {
-                category.setCreatedAt(new Date());
-                category.setUpdatedAt(new Date());
-                session.save(category);
+        Transaction tx = session.beginTransaction();
+        try{
+            if(color.getId() == null){
+               color.setCreatedAt(new Date());
+               color.setUpdateAt(new Date());
+               session.save(color);
             }else{
-                category.setUpdatedAt(new Date());
-                session.update(category);
+                color.setUpdateAt(new Date());
+                session.update(color);
             }
-            transaction.commit();
+            tx.commit();
         }catch (Exception e){
-            transaction.rollback();
+            tx.rollback();
             e.printStackTrace();
         }finally {
             session.close();
@@ -68,15 +69,15 @@ public class CategoryRepository implements ICategoryRepository {
     @Override
     public void deleteById(Integer t) {
         Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        try{
-            Category category = session.get(Category.class, t);
-            if(category != null){
-                session.delete(category);
+        Transaction tx = session.beginTransaction();
+        try {
+            Color c = session.get(Color.class, t);
+            if(c != null){
+                session.delete(c);
             }
-            transaction.commit();
+            tx.commit();
         }catch (Exception e){
-            transaction.rollback();
+            tx.rollback();
             e.printStackTrace();
         }finally {
             session.close();

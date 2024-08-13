@@ -32,4 +32,9 @@ public class User {
             ,joinColumns = @JoinColumn(name="user_id")
             ,inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> roles;
+    @ManyToMany
+    @JoinTable(name="wishlist"
+            ,joinColumns = @JoinColumn(name="user_id")
+            ,inverseJoinColumns = @JoinColumn(name="product_id"))
+    private Set<Product> products;
 }

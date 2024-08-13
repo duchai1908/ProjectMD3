@@ -63,8 +63,8 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Product</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a th:href="tables-basic.html">ADD</a></li>
-                        <li><i class="fa fa-table"></i><a th:href="tables-data.html">LIST</a></li>
+                        <li><i class="fa fa-table"></i><a th:href="@{/admin/product/add}" >ADD</a></li>
+                        <li><i class="fa fa-table"></i><a th:href="@{/admin/product/list}" >LIST</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
@@ -72,6 +72,13 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/size/add}">ADD</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/size/list}">LIST</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Color</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/color/add}">ADD</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/color/list}">LIST</a></li>
                     </ul>
                 </li>
 
@@ -254,6 +261,11 @@
         <div class="content mt-3" th:case="add-category" th:insert="~{/admin/category/add :: add-category}"></div>
         <div class="content mt-3" th:case="list-size" th:insert="~{/admin/size/list :: list-size}"></div>
         <div class="content mt-3" th:case="add-size" th:insert="~{/admin/size/add :: add-size}"></div>
+        <div class="content mt-3" th:case="list-color" th:insert="~{/admin/color/list :: list-color}"></div>
+        <div class="content mt-3" th:case="add-color" th:insert="~{/admin/color/add :: add-color}"></div>
+        <div class="content mt-3" th:case="list-product" th:insert="~{/admin/product/list :: list-product}"></div>
+        <div class="content mt-3" th:case="add-product" th:insert="~{/admin/product/add :: add-product}"></div>
+        <div class="content mt-3" th:case="edit-product" th:insert="~{/admin/product/edit :: edit-product}"></div>
     </th:block>
 
     <!-- END MAIN-->

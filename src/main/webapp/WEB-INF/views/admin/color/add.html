@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Color</title>
+</head>
+<body>
+<div class="content mt-3" th:fragment="add-color">
+    <form action="/admin/color/add" th:object="${color}" method="post">
+        <div class="form-group">
+            <label>Color Name</label>
+            <input class="form-control" th:field="*{color}" placeholder="Please Enter Color name"/>
+            <span style="color: red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
+        </div>
+        <button type="submit" style="border-radius: 4px" class="btn btn-default btn-success">Add Size</button>
+        <button type="reset" class="btn btn-default btn-primary">Reset</button>
+    </form>
+</div>
+</body>
+</html>

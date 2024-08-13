@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="content mt-3" th:fragment="list-product">
+        <div class="col-lg-12" style="padding-bottom:120px">
+            <table class="table table-striped table-bordered table-hover text-center">
+                <thead>
+                <tr align="center">
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Category</th>
+                    <th>Sell</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th colspan="2">Action</th>
+                </tr>
+                </thead>
+                <tbody id="list-admin">
+                    <tr th:each="product, iterStat : ${listProduct}" th:id="'row-' + ${product.id}" >
+                        <td th:text="${iterStat.index+1}"></td>
+                        <td><a href="" th:text="${product.name}"></a></td>
+                        <td><img th:src="${product.mainImage}" width="100px" height="100px" style="object-fit: cover" alt="Fail"></td>
+                        <td th:text="${product.category.name}"></td>
+                        <td th:text="${product.selled}"></td>
+                        <td th:text="${product.status}"></td>
+                        <td th:text="${#dates.format(product.createdAt,'dd-MM-yyyy')}"></td>
+                        <td th:text="${#dates.format(product.updatedAt,'dd-MM-yyyy')}"></td>
+                        <td class="center">
+                            <button type="button" class="btn btn-danger"
+                                    th:onclick="'deleteProduct(' + ${product.id} + ')'"><i
+                                    class="fa fa-trash-o  fa-fw"></i></button>
+                        </td>
+                        <td class="center">
+                            <button type="button" id="btn-initupdate"
+                                    th:onclick="'updateProduct(' + ${product.id} + ')'"
+                                    class="btn btn-success btn-edit" data-toggle="modal" data-target="#exampleModal"
+                                    data-whatever="@mdo" ><i  class="fa fa-pencil fa-fw"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li th:if="${currentPage>0}"  class="page-item">
+                        <a class="page-link" th:href="@{/admin/product/list(page=${currentPage - 1},size=${size})}">Previous</a>
+                    </li>
+                    <li class="page-item" th:each="pageNum : ${#numbers.sequence(1,totalPages)}">
+                        <a class="page-link" th:href="@{/admin/product/list(page= ${pageNum - 1}, size=${size})}"
+                           th:text="${pageNum}"
+                           th:classappend="${pageNum == currentPage ? 'active': ''}">
+                        </a>
+                    </li>
+
+                    <li th:if="${currentPage < totalPages - 1}"  class="page-item">
+                        <a class="page-link" th:href="@{/admin/product/list(page=${currentPage + 1},size=${size})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <script>
+            function updateProduct(id){
+                window.location.href = "/admin/product/edit/"+id;
+            }
+            function deleteProduct(id){
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/admin/product/delete/"+id;
+                    }
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>
