@@ -1,5 +1,6 @@
 package com.ra.projectmd3test.repository.impl;
 
+import com.ra.projectmd3test.model.dto.ProductDetailRequest;
 import com.ra.projectmd3test.model.entity.Image;
 import com.ra.projectmd3test.model.entity.ProductDetail;
 import com.ra.projectmd3test.repository.design.IProductDetailRepository;
@@ -28,7 +29,7 @@ public class ProductDetailRepository implements IProductDetailRepository {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            if(productDetail.getId() == null && images.size() > 0){
+            if(productDetail.getId() == null && images.get(0).getOriginalFilename()!=""){
                 session.save(productDetail);
                 for (MultipartFile image : images) {
                     Image newimg = new Image();
@@ -36,8 +37,20 @@ public class ProductDetailRepository implements IProductDetailRepository {
                     newimg.setImageUrl(uploadService.uploadFileToServer(image));
                     imageService.save(newimg);
                 }
-            }else{
+            }else if(productDetail.getId() != null && images.get(0).getOriginalFilename()!=""){
+                Query query = session.createQuery("delete from Image where productDetail.id = :productDetailId").setParameter("productDetailId", productDetail.getId());
+                query.executeUpdate();
+                session.update(productDetail);
+                for (MultipartFile image : images) {
+                    Image newimg = new Image();
+                    newimg.setProductDetail(productDetail);
+                    newimg.setImageUrl(uploadService.uploadFileToServer(image));
+                    imageService.save(newimg);
+                }
+            }else if(productDetail.getId() == null){
                 session.save(productDetail);
+            }else if(productDetail.getId() != null){
+                session.update(productDetail);
             }
             transaction.commit();
         }catch (Exception e) {
@@ -47,6 +60,7 @@ public class ProductDetailRepository implements IProductDetailRepository {
             session.close();
         }
     }
+
 
     @Override
     public List<ProductDetail> getProductDetailByProductId(Integer productId, Integer offset, Integer size) {

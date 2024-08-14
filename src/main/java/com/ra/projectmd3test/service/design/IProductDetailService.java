@@ -12,4 +12,5 @@ public interface IProductDetailService extends IGenericRequestService<ProductDet
     List<ProductDetail> getProductDetailByProductId(Integer productId,Integer page, Integer size);
     Long getTotalProductDetail();
     Map<Integer, List<String>> getProductImagesMap();
+    void updateProductDetail(ProductDetailRequest productDetailRequest, List<MultipartFile> images, Integer productDetailId);
 }

@@ -66,13 +66,30 @@ public class ProductDetailService implements IProductDetailService {
     }
 
     @Override
+    public void updateProductDetail(ProductDetailRequest productDetailRequest, List<MultipartFile> images, Integer productDetailId) {
+        ProductDetail productDetail = IProductDetailRepository.findById(productDetailId);
+        if (productDetail != null) {
+            Size size = ISizeService.findById(productDetailRequest.getSize());
+            Color color = IColorService.findById(productDetailRequest.getColor());
+            Product product = productService.findById(productDetailRequest.getProduct());
+            productDetail.setPrice(productDetailRequest.getPrice());
+            productDetail.setColor(color);
+            productDetail.setSize(size);
+            productDetail.setQuantity(productDetailRequest.getQuantity());
+            productDetail.setProduct(product);
+            productDetail.setId(productDetailId);
+            IProductDetailRepository.saveProductDetail(productDetail,images);
+        }
+    }
+
+    @Override
     public void save(ProductDetailRequest productDetailRequest) {
 
     }
 
     @Override
     public void deleteById(Integer id) {
-
+        IProductDetailRepository.deleteById(id);
     }
     public Map<Integer, List<String>> getProductImagesMap() {
         // Lấy tất cả các hình ảnh từ repository

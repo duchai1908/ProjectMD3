@@ -1,13 +1,10 @@
 package com.ra.projectmd3test.controller.admin;
 
 import com.ra.projectmd3test.model.dto.ProductDetailRequest;
-import com.ra.projectmd3test.model.entity.Image;
-import com.ra.projectmd3test.model.entity.ProductDetail;
-import com.ra.projectmd3test.service.design.IColorService;
-import com.ra.projectmd3test.service.design.IProductDetailService;
-import com.ra.projectmd3test.service.design.ISizeService;
-import com.ra.projectmd3test.service.design.IimageService;
+import com.ra.projectmd3test.model.entity.Product;
+import com.ra.projectmd3test.service.design.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,8 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
 
 @Controller
 @RequestMapping("/admin/productdetail")
@@ -30,10 +26,16 @@ public class ProductDetailController {
     private IProductDetailService productDetailService;
     @Autowired
     private IimageService imageService;
+    @Autowired
+    private IProductService productService;
     @GetMapping("/list/{id}")
     public String list(Model model, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size, @PathVariable("id") Integer id) {
         Integer pageSize = Math.max(size,1);
         Integer currentPage  = Math.max(page,0);
+        Product product = productService.findById(id);
+        if(product == null) {
+            return "admin/403";
+        }
         Long totalProductDetail = productDetailService.getTotalProductDetail();
         int totalPages = (int) Math.ceil((double) totalProductDetail / pageSize);
         model.addAttribute("totalPages", totalPages);
@@ -51,7 +53,10 @@ public class ProductDetailController {
         return "admin/dashboard";
     }
     @PostMapping("/add")
-    public String add(@Valid @ModelAttribute("productDetailRequest") ProductDetailRequest productDetailRequest, BindingResult bindingResult,Model model,@RequestParam("image") List<MultipartFile> images) {
+    public String add(@Valid @ModelAttribute("productDetailRequest") ProductDetailRequest productDetailRequest,
+                      BindingResult bindingResult,Model model,
+                      @RequestParam("image") List<MultipartFile> images,
+                      @RequestParam("prdtid") Integer productDetailId) {
                     if(bindingResult.hasErrors()) {
                         model.addAttribute("sizeService",sizeService.findAll());
                         model.addAttribute("colorService",colorService.findAll());
@@ -59,11 +64,20 @@ public class ProductDetailController {
                         model.addAttribute("portfolio","ProductDetail");
                         model.addAttribute("action","List");
                         model.addAttribute("productId",productDetailRequest.getProduct());
-                        model.addAttribute("productDetailRequest", new ProductDetailRequest());
+                        model.addAttribute("productDetailRequest", productDetailRequest);
                         return "admin/dashboard";
                     }else{
-                        productDetailService.saveProductDetail(productDetailRequest,images);
+                        if(productDetailId > 0){
+                            productDetailService.updateProductDetail(productDetailRequest,images,productDetailId);
+                        }else{
+                            productDetailService.saveProductDetail(productDetailRequest,images);
+                        }
                         return "redirect:/admin/productdetail/list/"+productDetailRequest.getProduct();
                     }
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteProductDetail(@PathVariable("id") Integer id){
+        productDetailService.deleteById(id);
+        return ResponseEntity.ok("Product deleted successfully");
     }
 }

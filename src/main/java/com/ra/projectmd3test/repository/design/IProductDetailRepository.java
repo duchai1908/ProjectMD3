@@ -1,5 +1,6 @@
 package com.ra.projectmd3test.repository.design;
 
+import com.ra.projectmd3test.model.dto.ProductDetailRequest;
 import com.ra.projectmd3test.model.entity.ProductDetail;
 import org.springframework.web.multipart.MultipartFile;
 
