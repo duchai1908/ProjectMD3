@@ -1,11 +1,9 @@
 package com.ra.projectmd3test.service.impl;
 
 import com.ra.projectmd3test.model.dto.ProductDetailRequest;
-import com.ra.projectmd3test.model.entity.Color;
-import com.ra.projectmd3test.model.entity.Product;
-import com.ra.projectmd3test.model.entity.ProductDetail;
-import com.ra.projectmd3test.model.entity.Size;
+import com.ra.projectmd3test.model.entity.*;
 import com.ra.projectmd3test.repository.design.IProductDetailRepository;
+import com.ra.projectmd3test.repository.design.IimageRepository;
 import com.ra.projectmd3test.service.design.IColorService;
 import com.ra.projectmd3test.service.design.IProductDetailService;
 import com.ra.projectmd3test.service.design.IProductService;
@@ -15,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductDetailService implements IProductDetailService {
@@ -26,9 +26,22 @@ public class ProductDetailService implements IProductDetailService {
     private IColorService IColorService;
     @Autowired
     private IProductService productService;
+    @Autowired
+    private IimageRepository imageRepository;
     @Override
     public List<ProductDetail> findAll(Integer page, Integer size) {
         return IProductDetailRepository.findAll();
+    }
+
+    @Override
+    public List<ProductDetail> getProductDetailByProductId(Integer productId, Integer page, Integer size) {
+        Integer offset = page*size;
+        return IProductDetailRepository.getProductDetailByProductId(productId, offset, size);
+    }
+
+    @Override
+    public Long getTotalProductDetail() {
+        return IProductDetailRepository.getTotalProductDetail();
     }
 
     @Override
@@ -60,5 +73,16 @@ public class ProductDetailService implements IProductDetailService {
     @Override
     public void deleteById(Integer id) {
 
+    }
+    public Map<Integer, List<String>> getProductImagesMap() {
+        // Lấy tất cả các hình ảnh từ repository
+        List<Image> allImages = imageRepository.findAll();
+
+        // Tạo Map để liên kết productDetailId với danh sách URL hình ảnh
+        return allImages.stream()
+                .collect(Collectors.groupingBy(
+                        image -> image.getProductDetail().getId(),
+                        Collectors.mapping(Image::getImageUrl, Collectors.toList())
+                ));
     }
 }

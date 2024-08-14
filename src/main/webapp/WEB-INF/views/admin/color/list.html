@@ -23,7 +23,7 @@
             <td th:text="${#dates.format(color.createdAt,'dd-MM-yyyy')}"></td>
             <td th:text="${#dates.format(color.updateAt,'dd-MM-yyyy')}"></td>
             <td class="center">
-                <button type="button" th:onclick="'deleteCate(' + ${color.id} + ')'" class="btn btn-danger"><i
+                <button type="button" th:onclick="'deleteCate(' + ${color.id} + ')'" class="btn btn-danger btn-detail"><i
                         class="fa fa-trash-o  fa-fw"></i></button>
             </td>
             <td class="center">

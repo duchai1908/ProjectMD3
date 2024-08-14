@@ -8,6 +8,7 @@ import com.ra.projectmd3test.service.impl.ImageService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
@@ -45,6 +46,44 @@ public class ProductDetailRepository implements IProductDetailRepository {
         }finally {
             session.close();
         }
+    }
+
+    @Override
+    public List<ProductDetail> getProductDetailByProductId(Integer productId, Integer offset, Integer size) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<ProductDetail> productDetails = null;
+        try{
+            Query<ProductDetail> query = session.createQuery("from ProductDetail where product.id  = :productId", ProductDetail.class).setParameter("productId", productId);
+            query.setFirstResult(offset);
+            query.setMaxResults(size);
+            productDetails = query.list();
+            transaction.commit();
+        }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return productDetails;
+    }
+
+    @Override
+    public Long getTotalProductDetail() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Long totalProductDetail = null;
+        try{
+            Query<Long> query = session.createQuery("select count(*) from ProductDetail", Long.class);
+            totalProductDetail = query.getSingleResult();
+            transaction.commit();
+        }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return totalProductDetail;
     }
 
     @Override

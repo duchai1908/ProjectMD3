@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IProductDetailRepository extends IGenericRepsitory<ProductDetail,Integer>{
     void saveProductDetail(ProductDetail productDetail, List<MultipartFile> images);
+    List<ProductDetail> getProductDetailByProductId(Integer productId,Integer offset, Integer size);
+    Long getTotalProductDetail();
 }
