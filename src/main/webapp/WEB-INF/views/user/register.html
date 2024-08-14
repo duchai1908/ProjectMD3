@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from htmldemo.net/pebona/pebona/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Mar 2023 20:51:52 GMT -->
+<head th:insert="/user/layout/layout::head-link">
+
+</head>
+
+<body>
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please upgrade your browser to improve your experience.</p>
+<![endif]-->
+
+<!-- Start of Whole Site Wrapper with mobile menu support -->
+<div id="whole" class="whole-site-wrapper">
+
+  <!-- Start of Newsletter Popup and Header -->
+
+  <th:block th:replace="/user/layout/layoutProduct::header-products"></th:block>
+  <!-- End of Breadcrumbs -->
+
+  <!-- Start of Main Content Wrapper -->
+  <div id="content" class="main-content-wrapper">
+
+    <!-- Start of Login Wrapper -->
+    <div class="login-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <main id="primary" class="site-main">
+              <div class="user-login">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12">
+                    <div class="section-title">
+                      <h2>Create an Account</h2>
+                    </div>
+                  </div>
+                </div> <!-- end of row -->
+
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8 offset-xl-2">
+                    <div class="registration-form login-form">
+                      <form action="#">
+                        <div class="login-info mb-half">
+                          <p>Already have an account? <a th:href="@{/login}">Log in instead!</a></p>
+                        </div>
+                        <div class="form-group row align-items-center">
+                          <label class="col-12 col-sm-12 col-md-4 col-form-label">Title</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <div class="form-row">
+                              <div class="col-6 col-sm-3">
+                                <div class="custom-radio">
+                                  <input class="form-check-input" type="radio" name="gender" id="male">
+                                  <span class="checkmark"></span>
+                                  <label class="form-check-label" for="male">Mr.</label>
+                                </div>
+                              </div>
+                              <div class="col-6 col-sm-3">
+                                <div class="custom-radio">
+                                  <input class="form-check-input" type="radio" name="gender" id="female">
+                                  <span class="checkmark"></span>
+                                  <label class="form-check-label" for="female">Mrs.</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="f-name" class="col-12 col-sm-12 col-md-4 col-form-label">First Name</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="text" class="form-control" id="f-name" required="">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="l-name" class="col-12 col-sm-12 col-md-4 col-form-label">Last Name</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="text" class="form-control" id="l-name" required="">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="email" class="col-12 col-sm-12 col-md-4 col-form-label">Email Address</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="text" class="form-control" id="email" required="">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputpassword" class="col-12 col-sm-12 col-md-4 col-form-label">Current Password</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="password" class="form-control" id="inputpassword" required="">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="newpassword" class="col-12 col-sm-12 col-md-4 col-form-label">New Password</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="password" class="form-control" id="newpassword" required="">
+                            <button class="pass-show-btn" type="button">Show</button>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="c-password" class="col-12 col-sm-12 col-md-4 col-form-label">Confirm Password</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="password" class="form-control" id="c-password" required="">
+                            <button class="pass-show-btn" type="button">Show</button>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="birth" class="col-12 col-sm-12 col-md-4 col-form-label">Birthdate (Optional)</label>
+                          <div class="col-12 col-sm-12 col-md-8 col-lg-8">
+                            <input type="text" class="form-control" id="birth" placeholder="MM / DD / YYYY" required="">
+                          </div>
+                        </div>
+                        <div class="form-check row p-0 mt-5">
+                          <div class="col-12 col-sm-12 col-md-8 offset-md-4 col-lg-6 offset-lg-4">
+                            <div class="custom-checkbox">
+                              <input class="form-check-input" type="checkbox" id="offer">
+                              <span class="checkmark"></span>
+                              <label class="form-check-label" for="offer">Receive offers from our partners</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-check row p-0 mt-4">
+                          <div class="col-12 col-sm-12 col-md-8 offset-md-4 col-lg-8 offset-lg-4">
+                            <div class="custom-checkbox">
+                              <input class="form-check-input" type="checkbox" id="subscribe" required="">
+                              <span class="checkmark"></span>
+                              <label class="form-check-label" for="subscribe">Sign up for our newsletter<br>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers..</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="register-box d-flex justify-content-end mt-half">
+                          <button type="submit" class="default-btn tiny-btn">Register</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div> <!-- end of user-login -->
+            </main> <!-- end of #primary -->
+          </div>
+        </div> <!-- end of row -->
+      </div> <!-- end of container -->
+    </div>
+    <!-- End of Login Wrapper -->
+  </div>
+  <!-- End of Main Content Wrapper -->
+
+  <!-- Start of Footer -->
+  <th:block th:replace="/user/layout/layout::footer"></th:block>
+  <!-- End of Footer -->
+
+  <!-- Quick View Content Start -->
+  <div class="product-quick-view">
+    <div class="container">
+      <!-- Start of Modal -->
+      <div class="modal fade" id="product_quick_view">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            </div> <!-- end of modal-header -->
+
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-7">
+                  <div class="product-gallery">
+                    <div class="gallery-with-thumbs" data-nav-center="false">
+                      <div class="product-image-container">
+                        <div class="product-full-image main-slider image-popup">
+
+                          <!-- Slides -->
+                          <div class="swiper-wrapper">
+                            <figure class="swiper-slide">
+                              <a th:href="@{/userAssets/images/products/single/product-1.jpg}" data-size="600x600">
+                                <img th:src="@{/userAssets/images/products/single/product-1.jpg}" alt="Product Image">
+                                <div class="image-overlay"><i class="fa fa-search-plus"></i></div>
+                              </a>
+                              <figcaption class="visually-hidden">
+                                <span>Product Image</span>
+                              </figcaption>
+                            </figure>
+                            <figure class="swiper-slide">
+                              <a th:href="@{/userAssets/images/products/single/product-2.jpg}" data-size="600x600">
+                                <img th:src="@{/userAssets/images/products/single/product-2.jpg}" alt="Product Image">
+                                <div class="image-overlay"><i class="fa fa-search-plus"></i></div>
+                              </a>
+                              <figcaption class="visually-hidden">
+                                <span>Product Image</span>
+                              </figcaption>
+                            </figure>
+                            <figure class="swiper-slide">
+                              <a th:href="@{/userAssets/images/products/single/product-3.jpg}" data-size="600x600">
+                                <img th:src="@{/userAssets/images/products/single/product-3.jpg}" alt="Product Image">
+                                <div class="image-overlay"><i class="fa fa-search-plus"></i></div>
+                              </a>
+                              <figcaption class="visually-hidden">
+                                <span>Product Image</span>
+                              </figcaption>
+                            </figure>
+                            <figure class="swiper-slide">
+                              <a th:href="@{/userAssets/images/products/single/product-4.jpg}" data-size="600x600">
+                                <img th:src="@{/userAssets/images/products/single/product-4.jpg}" alt="Product Image">
+                                <div class="image-overlay"><i class="fa fa-search-plus"></i></div>
+                              </a>
+                              <figcaption class="visually-hidden">
+                                <span>Product Image</span>
+                              </figcaption>
+                            </figure>
+                            <figure class="swiper-slide">
+                              <a th:href="@{/userAssets/images/products/single/product-5.jpg}" data-size="600x600">
+                                <img th:src="@{/userAssets/images/products/single/product-5.jpg}" alt="Product Image">
+                                <div class="image-overlay"><i class="fa fa-search-plus"></i></div>
+                              </a>
+                              <figcaption class="visually-hidden">
+                                <span>Product Image</span>
+                              </figcaption>
+                            </figure>
+                            <figure class="swiper-slide">
+                              <a th:href="@{/userAssets/images/products/single/product-6.jpg}" data-size="600x600">
+                                <img th:src="@{/userAssets/images/products/single/product-6.jpg}" alt="Product Image">
+                                <div class="image-overlay"><i class="fa fa-search-plus"></i></div>
+                              </a>
+                              <figcaption class="visually-hidden">
+                                <span>Product Image</span>
+                              </figcaption>
+                            </figure>
+                          </div>
+                        </div> <!-- end of product-full-image -->
+                      </div>
+
+                      <div class="product-thumb-container">
+                        <div class="product-thumb-image pos-r">
+                          <div class="nav-slider">
+                            <!-- Slides -->
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                <img th:src="@{/userAssets/images/products/single/product-thumb-1.jpg}" alt="Product Thumbnail Image">
+                              </div>
+                              <div class="swiper-slide">
+                                <img th:src="@{/userAssets/images/products/single/product-thumb-2.jpg}" alt="Product Thumbnail Image">
+                              </div>
+                              <div class="swiper-slide">
+                                <img th:src="@{/userAssets/images/products/single/product-thumb-3.jpg}" alt="Product Thumbnail Image">
+                              </div>
+                              <div class="swiper-slide">
+                                <img th:src="@{/userAssets/images/products/single/product-thumb-4.jpg}" alt="Product Thumbnail Image">
+                              </div>
+                              <div class="swiper-slide">
+                                <img th:src="@{/userAssets/images/products/single/product-thumb-5.jpg}" alt="Product Thumbnail Image">
+                              </div>
+                              <div class="swiper-slide">
+                                <img th:src="@{/userAssets/images/products/single/product-thumb-6.jpg}" alt="Product Thumbnail Image">
+                              </div>
+                            </div>
+
+                            <!-- Navigation -->
+                            <div class="swiper-arrow next"><i class="fa fa-angle-down"></i></div>
+                            <div class="swiper-arrow prev"><i class="fa fa-angle-up"></i></div>
+                          </div>
+                        </div> <!-- end of product-thumb-image -->
+                      </div>
+                    </div> <!-- end of gallery-with-thumbs -->
+                  </div> <!-- end of product-gallery -->
+                </div>
+                <div class="col-12 col-md-6 col-lg-5">
+                  <div class="product-details">
+                    <h3 class="product-name">Cas Meque Metus</h3>
+                    <div class="product-ratings">
+                      <ul class="rating d-flex">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                      </ul>
+                    </div>
+                    <div class="product-price">
+                      <p class="d-flex align-items-center">
+                        <span class="price-old">$54.65</span>
+                        <span class="price-new">$43.72</span>
+                        <span class="price-discount">-20%</span>
+                      </p>
+                    </div>
+                    <div class="product-description">
+                      <p>Regular fit, round neckline, short sleeves. Made of extra long staple pima cotton.</p>
+                    </div>
+                    <form th:action="@{/shopping-cart}" class="product-actions">
+                      <h3>Available Options</h3>
+                      <div class="product-size-color d-flex">
+                        <div class="product-size">
+                          <label>Size</label>
+                          <select class="nice-select">
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                          </select>
+                        </div>
+                        <div class="product-color">
+                          <label>color</label>
+                          <ul class="color-list">
+                            <li>
+                              <a class="white" href="#"></a>
+                            </li>
+                            <li>
+                              <a class="orange active" href="#"></a>
+                            </li>
+                            <li>
+                              <a class="paste" href="#"></a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="product-stock">
+                        <label>Quantity</label>
+                        <ul class="d-flex flex-wrap align-items-center">
+                          <li class="box-quantity">
+                            <div class="cart-input">
+                              <input class="cart-input-box" type="text" value="0">
+                              <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                              <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                            </div>
+                          </li>
+                          <li>
+                            <button type="submit" class="default-btn">Add to Cart</button>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="wishlist-compare">
+                        <button class="btn-wishlist" type="button" title="Add to Wishlist">Add to Wishlist</button>
+                      </div>
+                    </form>
+                  </div> <!-- end of product-details -->
+                </div>
+              </div> <!-- end of row -->
+            </div> <!-- end of modal-body -->
+
+            <div class="modal-footer justify-content-start">
+              <div class="social-sharing d-flex align-items-center">
+                <span>Share</span>
+                <ul class="list-inline">
+                  <li class="list-inline-item"><a href="#" class="bg-facebook" data-bs-toggle="tooltip" data-position="top" data-original-title="Facebook" target="_blank"><i class="fa fa-facebook"></i><span>Share</span></a></li>
+                  <li class="list-inline-item"><a href="#" class="bg-twitter" data-bs-toggle="tooltip" data-position="top" data-original-title="Twitter" target="_blank"><i class="fa fa-twitter"></i><span>Tweet</span></a></li>
+                  <li class="list-inline-item"><a href="#" class="bg-gplus" data-bs-toggle="tooltip" data-position="top" data-original-title="Google Plus" target="_blank"><i class="fa fa-google-plus"></i><span>Google+</span></a></li>
+                  <li class="list-inline-item"><a href="#" class="bg-pinterest" data-bs-toggle="tooltip" data-position="top" data-original-title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i><span>Pinterest</span></a></li>
+                </ul>
+              </div>
+            </div> <!-- end of modal-footer -->
+          </div> <!-- end of modal-content -->
+        </div> <!-- end of modal-dialog -->
+      </div> <!-- end of modal -->
+    </div> <!-- end of container -->
+  </div>
+  <!-- Quick View Content End -->
+
+  <!-- Start of Scroll to Top -->
+  <div id="to_top">
+    <i class="ion ion-ios-arrow-forward"></i>
+    <i class="ion ion-ios-arrow-forward"></i>
+  </div>
+  <!-- End of Scroll to Top -->
+</div>
+<!-- End of Whole Site Wrapper -->
+
+<!-- Initializing Photoswipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Photoswipe -->
+
+
+<!-- JS
+============================================ -->
+<th:block th:replace="/user/layout/layout::plugins-jss-link"></th:block>
+
+</body>
+
+<!-- Mirrored from htmldemo.net/pebona/pebona/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Mar 2023 20:52:19 GMT -->
+</html>

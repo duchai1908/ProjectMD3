@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  
+<!-- Mirrored from nouthemes.net/html/claue/shopping-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2023 08:00:14 GMT -->
+<head th:insert="/layout/user/layout::header-frag">
+
+</head>
+
+<body>
+<th:block th:replace="/layout/user/layout::header"></th:block>
+<th:block th:replace="/layout/user/layoutProduct::bread-cumb"></th:block>
+    <div class="ps-hero bg--cover" th:data-background="@{/assets/img/hero/shop.jpg}">
+      <div class="container">
+        <h1>CART</h1>
+      </div>
+    </div>
+    <div class="ps-page">
+      <div class="ps-page__content">
+        <div class="container">
+          <div class="ps-shopping-cart">
+            <div class="table-responsive">
+              <table class="table ps-tablet ps-table--shopping-cart">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="product-standard.html"><img th:src="@{/assets/img/product/best-2-1.jpg}" alt=""></a></td>
+                    <td><a href="product-standard.html">Cyan Boheme - Cyan, M</a></td>
+                    <td>$45.00</td>
+                    <td>
+                      <a class="ps-btn--close ps-btn--no-boder" href="#"></a>
+                    </td>
+                  </tr>
+                  <tr class="coupon">
+                    <td colspan="2">
+                      <div class="form-group--inline">
+                        <label>Coupon</label>
+                        <div class="form-group__content">
+                          <input class="form-control" type="text" placeholder="Coupon Code">
+                          <button class="ps-btn ps-btn--outline ps-btn--black">Apply coupon</button>
+                        </div>
+                      </div>
+                    </td>
+                    <td colspan="3"><a class="ps-btn ps-btn--outline ps-btn--black" href="#"> Update Cart</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <figure class="ps-shopping-cart__total">
+              <figcaption>CART TOTALS</figcaption>
+              <div class="table-responsive">
+                <table class="table ps-table">
+                  <tbody>
+                    <tr>
+                      <td><strong>Subtotal</strong></td>
+                      <td>$45.00</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Shiping</strong></td>
+                      <td>
+                        <p>Local Pickup: $15.00</p><a href="#">Calculate shipping</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><strong>Subtotal</strong></td>
+                      <td>$45.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="footer"><a class="ps-btn ps-btn--outline ps-btn--black" th:href="checkout">Process to checkout</a></div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="ps-footer">
+      <div class="ps-footer__content">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12  ">
+              <div class="ps-site-info"><a class="ps-logo" href="#"><img th:src="@{/assets/img/logo.png}" alt=""></a>
+                <figure>
+                  <p><i class="pe-7s-map-marker"></i> 184 Main Rd E, St Albans <br> VIC 3021, Australia</p>
+                  <p><i class="pe-7s-mail"></i><a href="https://nouthemes.net/cdn-cgi/l/email-protection#d8bbb7b6acb9bbac98bbb7b5a8b9b6a1f6bbb7b5"><span class="__cf_email__" data-cfemail="b4d7dbdac0d5d7c0f4d7dbd9c4d5dacd9ad7dbd9">[email&#160;protected]</span></a></p>
+                  <p><i class="pe-7s-call"></i> +001 2233 456</p>
+                </figure>
+                <ul class="ps-list--social">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                  <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12  ">
+              <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-6 ">
+                  <div class="widget widget_footer">
+                    <h3 class="widget-title">Categories</h3>
+                    <ul>
+                      <li><a href="shop-4-column.html">Men</a></li>
+                      <li><a href="shop-4-column.html">Women</a></li>
+                      <li><a href="shop-4-column.html">Accessories</a></li>
+                      <li><a href="shop-4-column.html">Shoes</a></li>
+                      <li><a href="shop-4-column.html">Denim</a></li>
+                      <li><a href="shop-4-column.html">Dress</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-6 ">
+                  <div class="widget widget_footer">
+                    <h3 class="widget-title">Infomation</h3>
+                    <ul>
+                      <li><a href="about-us.html">About Us</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                      <li><a href="returns-exchanges.html">Returns & Exchanges</a></li>
+                      <li><a href="#">Shipping & Delivery</a></li>
+                      <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-6 ">
+                  <div class="widget widget_footer">
+                    <h3 class="widget-title">Quick Links</h3>
+                    <ul>
+                      <li><a href="#">Store Location</a></li>
+                      <li><a href="login.html">My Account</a></li>
+                      <li><a href="orders-tracking.html">Orders Tracking</a></li>
+                      <li><a href="size-guides.html">Size Guide</a></li>
+                      <li><a href="faqs.html">FAQs</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12 ">
+              <form class="ps-form--subscribe-footer" action="https://nouthemes.net/html/claue/do_action" method="post">
+                <p>Subscribe to our newsletter and get 10% off your first purchase</p>
+                <div class="form-group">
+                  <input class="form-control" type="text" placeholder="Your EmaiL Address">
+                  <button>Subscribe</button>
+                </div><img th:src="@{/assets/img/payment2.png}" alt="">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps-footer__copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+              <p>Copyright © 2016 <a href="#">Claue</a> all rights reserved. Powered by <a href="#">JanStudio</a></p>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 ">
+              <ul class="ps-footer__nav">
+                <li><a href="#">Shop</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="about-us.html">Contact</a></li>
+                <li><a href="about-us.html">Blog</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="back2top"><i class="pe-7s-angle-up"></i></div>
+    <div class="ps-site-overlay"></div>
+    <div id="loader-wrapper">
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
+      <div class="ps-search__content">
+        <form class="ps-form--primary-search" action="https://nouthemes.net/html/claue/do_action" method="post">
+          <input class="form-control" type="text" placeholder="Search for...">
+          <button><i class="aroma-magnifying-glass"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Plugins-->
+  <th:block th:replace="/layout/user/layout::plugins-jss-link"></th:block>
+  </body>
+
+<!-- Mirrored from nouthemes.net/html/claue/shopping-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2023 08:00:14 GMT -->
+</html>

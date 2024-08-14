@@ -163,4 +163,22 @@ public class ProductDetailRepository implements IProductDetailRepository {
             session.close();
         }
     }
+
+    @Override
+    public List<ProductDetail> getProductDetailByProductId(Integer productId) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<ProductDetail> productDetails = null;
+        try{
+            Query<ProductDetail> query = session.createQuery("from ProductDetail where product.id  = :productId", ProductDetail.class).setParameter("productId", productId);
+            productDetails = query.list();
+            transaction.commit();
+        }catch (Exception e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return productDetails;
+    }
 }

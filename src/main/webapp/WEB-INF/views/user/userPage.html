@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  
+<!-- Mirrored from nouthemes.net/html/claue/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2023 08:00:13 GMT -->
+<head th:insert="/layout/user/layout::header-frag">
+
+</head>
+  <body>
+  <th:block th:replace="/layout/user/layout::header"></th:block>
+    <div class="ps-hero bg--cover" th:data-background="@{/assets/img/hero/shop.jpg}">
+      <div class="container">
+        <h1>MY ACCOUNT</h1>
+      </div>
+    </div>
+    <div class="container">
+      <h2>hihihi</h2>
+      <a th:href="@{/index}">Back to Home</a>
+    </div>
+  <th:block th:replace="/layout/user/layout::footer"></th:block>
+    <div id="back2top"><i class="pe-7s-angle-up"></i></div>
+    <div class="ps-site-overlay"></div>
+    <div id="loader-wrapper">
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <div class="ps-search" id="site-search"><a class="ps-btn--close" href="#"></a>
+      <div class="ps-search__content">
+        <form class="ps-form--primary-search" action="https://nouthemes.net/html/claue/do_action" method="post">
+          <input class="form-control" type="text" placeholder="Search for...">
+          <button><i class="aroma-magnifying-glass"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="ps-cart--sidebar">
+      <div class="ps-cart__header">
+        <h3>Mini Cart</h3><a class="ps-btn--close ps-btn--no-boder" href="#"></a>
+      </div>
+      <div class="ps-cart__content">
+        <div class="ps-product--cart">
+          <div class="ps-product__thumbnail"><a href="product-standard.html"><img src="img/product/best-5-1.jpg" alt=""></a><span class="ps-btn--close ps-btn--no-boder"></span></div>
+          <div class="ps-product__content"><a href="#">Cyan Boheme - Cyan, M</a><span>1x $45.00</span></div>
+        </div>
+        <div class="ps-product--cart">
+          <div class="ps-product__thumbnail"><a href="product-standard.html"><img src="img/product/best-3-1.jpg" alt=""></a><span class="ps-btn--close ps-btn--no-boder"></span></div>
+          <div class="ps-product__content"><a href="#">Cyan Boheme - Cyan, M</a><span>Size: M</span><span>1x $45.00</span></div>
+        </div>
+      </div>
+      <div class="ps-cart__footer">
+        <h4>SubTotal: <span>$60.00</span></h4><a class="ps-btn" href="user/shopping-cart.html">View Cart</a><a class="ps-btn" href="user/shopping-cart.html">Checkout</a>
+      </div>
+    </div>
+    <!-- Plugins-->
+  <th:block th:replace="/layout/user/layout::plugins-jss-link"></th:block>
+  </body>
+
+<!-- Mirrored from nouthemes.net/html/claue/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Feb 2023 08:00:13 GMT -->
+</html>

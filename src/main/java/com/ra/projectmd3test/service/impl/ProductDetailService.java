@@ -102,4 +102,10 @@ public class ProductDetailService implements IProductDetailService {
                         Collectors.mapping(Image::getImageUrl, Collectors.toList())
                 ));
     }
+
+
+    @Override
+    public List<ProductDetail> getProductDetailByProductId(Integer productId) {
+        return IProductDetailRepository.getProductDetailByProductId(productId);
+    }
 }

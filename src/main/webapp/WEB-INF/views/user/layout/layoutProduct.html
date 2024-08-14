@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<th:block th:fragment="header-products">
+    <!-- Start of Newsletter Popup and Header -->
+
+    <!-- End of Newsletter Popup -->
+
+    <!-- Start of Header -->
+    <header class="header bgc-white header-type-1">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 order-2 col-sm-12 order-sm-2 col-md-8 order-md-1 align-self-center">
+                        <p>Mid-season sale up to 20% OFF. Use code "SALEOFF20"</p>
+                    </div>
+                    <div class="col-12 order-1 col-sm-12 order-sm-1 col-md-4 order-md-2">
+                        <ul class="list-inline">
+                            <li class="currency list-inline-item">
+                                <div class="btn-group">
+                                    <button class="btn-link dropdown-toggle"> USD $<i class="fa fa-angle-down"></i></button>
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li><a href="#">Euro €</a></li>
+                                            <li><a href="#" class="current">USD $</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="language list-inline-item">
+                                <div class="btn-group">
+                                    <button class="btn-link dropdown-toggle">English <i class="fa fa-angle-down"></i></button>
+                                    <div class="dropdown-menu">
+                                        <ul>
+                                            <li><a href="#" class="current"><img th:src="@{/userAssets/images/icons/en-gb.jpg}" alt="Icons"> English</a></li>
+                                            <li><a href="#"><img th:src="@{/userAssets/images/icons/fr-fr.jpg}" alt="Icons"> Français</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- end of container -->
+        </div> <!-- end of top-bar -->
+
+        <div class="header-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 order-2 col-sm-6 order-sm-2 col-md-4 order-md-1 col-lg-3">
+                        <div class="header-search-area">
+                            <form action="#">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search entire store here ...">
+                                    <div class="input-group-append">
+                                        <button class="header-search-btn" type="submit"><i class="pe-7s-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-12 order-1 col-sm-12 order-sm-1 col-md-4 order-md-2 col-lg-6">
+                        <div class="logo">
+                            <a th:href="@{/index}"><img th:src="@{/userAssets/images/logo.png}" alt="Logo" class="img-fluid"></a>
+                        </div>
+                    </div>
+                    <div class="col-6 order-3 col-sm-6 col-md-4 col-lg-3">
+                        <div class="header-cart-area">
+                            <div class="header-cart">
+                                <div class="btn-group">
+                                    <form th:action="@{/shopping-cart}">
+                                        <button class="btn-link icon-cart" type="submit">
+                                            <i class="pe-7s-shopbag"></i>
+                                            <span class="count-style">2</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <ul class="list-inline">
+                                <li class="top-links list-inline-item">
+                                    <div class="btn-group">
+                                        <button class="btn-link dropdown-toggle"><i class="pe-7s-config"></i></button>
+                                        <div class="dropdown-menu">
+                                            <ul>
+                                                <li><a href="register.html">Register</a></li>
+                                                <li><a href="login.html">Login</a></li>
+                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="wishlist.html">Wishlist</a></li>
+                                                <li><a th:href="@{/checkout}">Checkout</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> <!-- end of header-cart-area -->
+                    </div>
+                </div>
+            </div> <!-- end of container -->
+        </div> <!-- end of header-top -->
+
+
+
+        <!-- Start of Main and Mobile Navigation -->
+        <div class="main-nav-area bgc-white">
+            <div class="container">
+                <nav id="main_nav" class="stellarnav">
+                    <ul>
+                        <li><a th:href="@{/index}"><span>Home</span></a>
+<!--                            <ul>-->
+<!--                                <li><a th:href="@{/index}">Home Page 1</a></li>-->
+<!--                                <li><a href="index-3.html">Home Page 2</a></li>-->
+<!--                                <li><a href="index-4.html">Home Page 3</a></li>-->
+<!--                                <li><a href="index-5.html">Home Page 4</a></li>-->
+<!--                                <li><a href="index-6.html">Home Page 5</a></li>-->
+<!--                            </ul>-->
+                        </li>
+                        <li class="mega" data-columns="4"><a th:href="@{/list-products}"><span>Shop</span></a>
+                            <ul class="mega-container">
+                                <li><a href="#" class="mega-menu-title"><h3>Shop pages 01</h3></a>
+                                    <ul>
+                                        <li><a th:href="@{/list-products}">Shop Grid</a></li>
+                                        <li><a href="shop-list.html">Shop List</a></li>
+                                        <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" class="mega-menu-title"><h3>Shop pages 02</h3></a>
+                                    <ul>
+                                        <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
+                                        <li><a href="single-product.html">Single Product Page</a></li>
+                                        <li><a href="compare.html">Product Compare</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" class="mega-menu-title"><h3>Shop pages 03</h3></a>
+                                    <ul>
+                                        <li><a href="cart.html">Cart Page</a><li>
+                                        <li><a href="checkout.html">Checkout Page</a></li>
+                                        <li><a href="wishlist.html">Wishlist Page</a></li>
+                                    </ul>
+                                </li>
+                                <li class="last"><a href="#" class="mega-menu-title"><h3>Shop pages 04</h3></a>
+                                    <ul>
+                                        <li><a href="my-account.html">My Account</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="register.html">Register</a></li>
+                                    </ul>
+                                </li>
+                                <li class="fullwidth-banner">
+                                    <a href="#"><img th:src="@{/userAssets/images/banners/menu-banner.jpg}" alt="Menu Banner"></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="blog.html"><span>Blog Pages</span></a>
+                            <ul>
+                                <li><a href="blog.html">Blog Full Width</a></li>
+                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="faqs.html"><span>Utility Pages</span></a>
+                            <ul>
+                                <li><a href="faqs.html">FAQs Page</a></li>
+                                <li><a href="404.html">404 Page</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html"><span>About Us</span></a></li>
+                        <li><a href="contact.html"><span>Contact Us</span></a></li>
+                    </ul>
+                </nav>
+            </div> <!-- end of container -->
+        </div>
+        <!-- End of Main and Mobile Navigation -->
+    </header>
+    <!-- End of Header -->
+
+    <div class="fixed-header-space"></div> <!-- empty placeholder div for Fixed Menu bar height-->
+
+    <!-- Start of Breadcrumbs -->
+    <div class="breadcrumb-section bgc-offset mb-full">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" th:href="@{/index}">Home</a>
+                        <span class="breadcrumb-item active">Shop</span>
+                    </nav>
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div>
+</th:block>
+</html>

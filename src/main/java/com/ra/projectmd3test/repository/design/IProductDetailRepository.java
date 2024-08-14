@@ -10,4 +10,5 @@ public interface IProductDetailRepository extends IGenericRepsitory<ProductDetai
     void saveProductDetail(ProductDetail productDetail, List<MultipartFile> images);
     List<ProductDetail> getProductDetailByProductId(Integer productId,Integer offset, Integer size);
     Long getTotalProductDetail();
+    List<ProductDetail> getProductDetailByProductId(Integer productId);
 }

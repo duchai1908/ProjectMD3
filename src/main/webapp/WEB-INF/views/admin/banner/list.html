@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content mt-3" th:fragment="list-banner">
+    <table id="example1" class="table table-bordered table-striped text-center">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="banner, iterStat : ${listBanner}" th:id="'row-' + ${banner.id}" >
+            <td th:text="${iterStat.index+1}"></td>
+            <td th:text="${banner.title}"></td>
+            <td th:text="${banner.description}"></td>
+            <td>
+                <img th:src="${banner.image}" alt="">
+            </td>
+            <td th:text="${banner.status}"></td>
+            <td class="center">
+                <button type="button" th:onclick="'deleteBanner(' + ${banner.id} + ')'" class="btn btn-danger"><i
+                        class="fa fa-trash-o  fa-fw"></i></button>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+<!--    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog" role="document">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                        <span aria-hidden="true">&times;</span>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <form id="updateForm" method="post" action="/admin/category/update" th:object="${category}">-->
+<!--                    <div class="modal-body">-->
+<!--                        <input type="hidden" id="adminId" name="adminId">-->
+<!--                        <div class="form-group">-->
+<!--                            <label class="col-form-label">Category name:</label>-->
+<!--                            <input type="text" class="form-control categoryName" id="newName" th:field="*{name}">-->
+<!--                            <span style="color: red" id="errors" ></span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" class="btn btn-success" id="btn-update">Update</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <script>
+        const updateButtons = document.querySelectorAll('.btn-edit');
+        const newName = document.getElementById("newName")
+        const cateId = document.getElementById("adminId")
+        // gán giá trị hiện tại của category cần sửa vào form update
+        updateButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                var dataId = this.dataset.id;
+                var dataName = this.dataset.name;
+                newName.value = dataName;
+                cateId.value = dataId;
+            });
+        });
+
+        const form = document.getElementById('updateForm');
+        const errorsSpan = document.getElementById('errors');
+        // Thêm sự kiện submit cho form
+        form.addEventListener('submit', function(event) {
+            // Ngăn chặn hành động mặc định (gửi form) nếu có lỗi
+            if (!validateForm()) {
+                event.preventDefault(); // Ngăn chặn gửi form
+            }
+        });
+
+        // Validate name category không được để trống
+        function validateForm() {
+            let isValid = true;
+            var nameValue = newName.value.trim();
+            // Xóa lỗi trước khi kiểm tra
+            errorsSpan.innerHTML = "";
+
+            // Kiểm tra xem trường tên có trống không
+            if (nameValue == "") {
+                errorsSpan.innerHTML = 'Banner name cannot be empty.';
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        // Hàm delete xử lý bằng ajax
+        function deleteBanner(id){
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // thực hiện ajax
+                    fetch(`/admin/banner/delete/` +id, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                const row = document.getElementById(`row-`+id);
+                                if (row) {
+                                    row.remove();
+                                }
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+                            } else {
+                                throw new Error('Failed to delete the banner');
+                            }
+                        })
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>
