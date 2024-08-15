@@ -1,7 +1,7 @@
 package com.ra.projectmd3test.controller.admin;
 
 import com.ra.projectmd3test.model.entity.Size;
-import com.ra.projectmd3test.service.design.ISizeService;
+import com.ra.projectmd3test.service.design.admin.ISizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

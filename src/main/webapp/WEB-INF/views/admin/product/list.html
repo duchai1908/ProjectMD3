@@ -56,7 +56,6 @@
                            th:classappend="${pageNum == currentPage ? 'active': ''}">
                         </a>
                     </li>
-
                     <li th:if="${currentPage < totalPages - 1}"  class="page-item">
                         <a class="page-link" th:href="@{/admin/product/list(page=${currentPage + 1},size=${size})}">Next</a>
                     </li>

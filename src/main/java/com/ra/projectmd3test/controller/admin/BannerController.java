@@ -1,8 +1,8 @@
 package com.ra.projectmd3test.controller.admin;
 
-import com.ra.projectmd3test.model.dto.BannerRequest;
+import com.ra.projectmd3test.model.dto.admin.BannerRequest;
 import com.ra.projectmd3test.model.entity.Banner;
-import com.ra.projectmd3test.service.impl.BannerService;
+import com.ra.projectmd3test.service.impl.admin.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

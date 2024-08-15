@@ -1,9 +1,6 @@
 package com.ra.projectmd3test.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +25,6 @@ public class User {
     private String address;
     private Date created_At;
     private Date updated_At;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="user_role"
-            ,joinColumns = @JoinColumn(name="user_id")
-            ,inverseJoinColumns = @JoinColumn(name="role_id"))
-    private Set<Role> roles;
     @ManyToMany
     @JoinTable(name="wishlist"
             ,joinColumns = @JoinColumn(name="user_id")

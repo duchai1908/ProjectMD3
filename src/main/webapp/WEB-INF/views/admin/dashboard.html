@@ -67,13 +67,6 @@
                         <li><i class="fa fa-table"></i><a th:href="@{/admin/product/list}" >LIST</a></li>
                     </ul>
                 </li>
-<!--                <li class="menu-item-has-children dropdown">-->
-<!--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Product Details</a>-->
-<!--                    <ul class="sub-menu children dropdown-menu">-->
-<!--                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/productdetail/add}">ADD</a></li>-->
-<!--                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/productdetail/list/1}">LIST</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Size</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -97,12 +90,12 @@
                     </ul>
                 </li>
 
-                <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
+                <h3 class="menu-title">Account</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Admin</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                        <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
+                        <li><i class="menu-icon fa fa-map-o"></i><a th:href="@{/adminaccount/register}">ADD</a></li>
+                        <li><i class="menu-icon fa fa-street-view"></i><a th:href="@{/adminaccount/account/list}">LIST</a></li>
                     </ul>
                 </li>
                 <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
@@ -222,7 +215,7 @@
 
                         <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        <a class="nav-link" th:href="@{/loginadmin/logout}"><i class="fa fa-power-off"></i> Logout</a>
                     </div>
                 </div>
 
@@ -284,6 +277,9 @@
         <div class="content mt-3" th:case="list-productdetail" th:insert="~{/admin/productdetail/list :: list-productdetail}"></div>
         <div class="content mt-3" th:case="list-banner" th:insert="~{/admin/banner/list :: list-banner}"></div>
         <div class="content mt-3" th:case="add-banner" th:insert="~{/admin/banner/add :: add-banner}"></div>
+        <div class="content mt-3" th:case="add-adminregister" th:insert="~{/admin/accountadmin/add :: add-admin}"></div>
+        <div class="content mt-3" th:case="account-list" th:insert="~{/admin/accountadmin/list :: list-admin}"></div>
+
     </th:block>
 
     <!-- END MAIN-->

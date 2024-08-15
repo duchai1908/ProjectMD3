@@ -1,8 +1,7 @@
 package com.ra.projectmd3test.controller.admin;
 
-import com.google.common.net.MediaType;
 import com.ra.projectmd3test.model.entity.Category;
-import com.ra.projectmd3test.service.design.ICategoryService;
+import com.ra.projectmd3test.service.design.admin.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

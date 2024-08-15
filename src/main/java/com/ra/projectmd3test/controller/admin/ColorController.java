@@ -1,7 +1,7 @@
 package com.ra.projectmd3test.controller.admin;
 
 import com.ra.projectmd3test.model.entity.Color;
-import com.ra.projectmd3test.service.impl.ColorService;
+import com.ra.projectmd3test.service.impl.admin.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

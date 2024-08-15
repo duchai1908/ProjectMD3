@@ -1,8 +1,8 @@
 package com.ra.projectmd3test.controller.admin;
 
-import com.ra.projectmd3test.model.dto.ProductDetailRequest;
+import com.ra.projectmd3test.model.dto.admin.ProductDetailRequest;
 import com.ra.projectmd3test.model.entity.Product;
-import com.ra.projectmd3test.service.design.*;
+import com.ra.projectmd3test.service.design.admin.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

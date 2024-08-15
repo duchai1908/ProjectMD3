@@ -16,6 +16,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name="role_name")
+    @Enumerated(EnumType.STRING)
     private RoleName roleName;
-    private Boolean status;
 }
