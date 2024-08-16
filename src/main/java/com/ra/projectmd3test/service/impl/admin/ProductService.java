@@ -82,4 +82,9 @@ public class ProductService implements IProductService {
     public void deleteById(Integer id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public List<Product> findByCategoryId(Integer categoryId) {
+        return productRepository.findByCategoryId(categoryId);
+    }
 }

@@ -4,6 +4,7 @@ import com.ra.projectmd3test.model.dto.admin.ProductDetailRequest;
 import com.ra.projectmd3test.model.entity.*;
 import com.ra.projectmd3test.repository.design.admin.IProductDetailRepository;
 import com.ra.projectmd3test.repository.design.admin.IimageRepository;
+import com.ra.projectmd3test.repository.impl.admin.ProductDetailRepository;
 import com.ra.projectmd3test.service.design.admin.IColorService;
 import com.ra.projectmd3test.service.design.admin.IProductDetailService;
 import com.ra.projectmd3test.service.design.admin.IProductService;
@@ -12,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -28,6 +31,10 @@ public class ProductDetailService implements IProductDetailService {
     private IProductService productService;
     @Autowired
     private IimageRepository imageRepository;
+    @Autowired
+    private ImageService imageService;
+    @Autowired
+    private ProductDetailRepository productDetailRepository;
     @Override
     public List<ProductDetail> findAll(Integer page, Integer size) {
         return IProductDetailRepository.findAll();
@@ -107,5 +114,46 @@ public class ProductDetailService implements IProductDetailService {
     @Override
     public List<ProductDetail> getProductDetailByProductId(Integer productId) {
         return IProductDetailRepository.getProductDetailByProductId(productId);
+    }
+
+    //phantrang
+    public List<ProductDetail> findWithPhanTrang(Integer page, Integer size) {
+        Integer offset = page*size;
+        return productDetailRepository.findAllByPhanTrang(offset,size);
+    }
+
+
+    @Override
+    public String formatPrice(double price) {
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.forLanguageTag("vi-VN"));
+        return numberFormat.format(price) + " VND";
+    }
+
+    //find one image with each product detail
+    public Map<Integer, Image> getOneProductImageMap() {
+        // Get all images from the image service
+        List<Image> allImages = imageService.findAll();
+
+        // Create a map of productDetailId to a single image
+        return allImages.stream()
+                .collect(Collectors.toMap(
+                        image -> image.getProductDetail().getId(),
+                        image -> image,
+                        (existing, replacement) -> existing // Keep the first image found
+                ));
+    }
+
+    //find all images with each product detail
+    public Map<Integer, List<Image>> getAllProductImageMap(){
+
+        // Create a map of productDetailId to all image
+        return imageService.findAll().stream()
+                .collect(Collectors.groupingBy(image -> image.getProductDetail().getId()));
+    }
+
+    //find product detail by product and category
+    @Override
+    public List<ProductDetail> findProductDetailsByCategoryId(Integer categoryId) {
+        return productDetailRepository.findProductDetailsByCategoryId(categoryId);
     }
 }

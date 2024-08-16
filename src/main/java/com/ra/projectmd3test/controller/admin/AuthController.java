@@ -42,7 +42,7 @@ public class AuthController {
             return "admin/dashboard";
         }else {
             adminAccountService.save(adminRegister);
-            return "redirect:/admin/account/list";
+            return "redirect:/adminaccount/account/list";
         }
     }
     @GetMapping("/account/list")

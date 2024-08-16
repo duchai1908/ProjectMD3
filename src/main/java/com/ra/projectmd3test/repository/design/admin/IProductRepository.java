@@ -8,4 +8,5 @@ import java.util.List;
 public interface IProductRepository extends IGenericService<Product,Integer> {
     List<Product> findAll(Integer offset, Integer size);
     Long getTotalProduct();
+    List<Product> findByCategoryId(Integer categoryId);
 }

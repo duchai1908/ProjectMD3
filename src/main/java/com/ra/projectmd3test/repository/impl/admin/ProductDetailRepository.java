@@ -180,4 +180,40 @@ public class ProductDetailRepository implements IProductDetailRepository {
         }
         return productDetails;
     }
+
+    @Override
+    public List<ProductDetail> findAllByPhanTrang(Integer offset, Integer size) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        List<ProductDetail> productDetails = null;
+        try {
+            Query<ProductDetail> query = session.createQuery("from ProductDetail ", ProductDetail.class);
+            query.setFirstResult(offset);
+            query.setMaxResults(size);
+            productDetails = query.getResultList();
+            tx.commit();
+        }catch (Exception e) {
+            tx.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return productDetails;
+    }
+
+    @Override
+    public List<ProductDetail> findProductDetailsByCategoryId(Integer categoryId) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery(
+                            "select pd from ProductDetail pd join pd.product p where p.category.id = :categoryId", ProductDetail.class)
+                    .setParameter("categoryId", categoryId)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
 }

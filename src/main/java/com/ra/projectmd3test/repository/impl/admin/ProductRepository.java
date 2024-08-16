@@ -116,4 +116,18 @@ public class ProductRepository implements IProductRepository {
             session.close();
         }
     }
+    @Override
+    public List<Product> findByCategoryId(Integer categoryId) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery("from Product where category.id = :categoryId order by id", Product.class)
+                    .setParameter("categoryId", categoryId)
+                    .list();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return null;
+    }
 }

@@ -10,4 +10,6 @@ public interface IProductDetailRepository extends IGenericRepsitory<ProductDetai
     List<ProductDetail> getProductDetailByProductId(Integer productId,Integer offset, Integer size);
     Long getTotalProductDetail();
     List<ProductDetail> getProductDetailByProductId(Integer productId);
+    List<ProductDetail> findAllByPhanTrang(Integer offset, Integer size);
+    public List<ProductDetail> findProductDetailsByCategoryId(Integer categoryId);
 }

@@ -21,6 +21,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Integer id;
+    //random code
     @Column(name = "code")
     private String code;
     @Column(name = "total_price")
