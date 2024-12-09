@@ -19,7 +19,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name="category_name",length = 100)
-    @NotBlank(message = "Khong duoc de trong")
+    @NotBlank(message = "Category name can't be null")
     private String name;
     @Column(name="created_at")
     private Date createdAt;

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from htmldemo.net/pebona/pebona/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Mar 2023 20:51:52 GMT -->
+<head th:insert="/user/layout/layout::head-link">
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please upgrade your browser to improve your experience.</p>
+<![endif]-->
+
+<!-- Start of Whole Site Wrapper with mobile menu support -->
+<div id="whole" class="whole-site-wrapper">
+
+    <!-- Start of Newsletter Popup and Header -->
+    <th:block th:replace="/user/layout/layout::news-and-header"></th:block>
+    <!-- End of Header -->
+
+    <div class="fixed-header-space"></div> <!-- empty placeholder div for Fixed Menu bar height-->
+
+    <!-- Start of Main Content Wrapper -->
+    <main id="content" class="main-content-wrapper">
+
+        <!-- Start of Primary Slider Section -->
+        <section class="primary-slider-section mb0 pos-r">
+            <div id="primary_slider" class="swiper-container slider-type-1">
+
+                <!-- Slides -->
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide bg-img-wrapper" th:each="banner : ${banners}">
+                        <div class="slide-inner image-placeholder">
+                            <img th:src="${banner.image}" class="visually-hidden" alt="Slider Image">
+                            <div class="slide-progress"></div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="slide-content layer-animation-1">
+                                            <p class="promo-title"><span>limited edition</span> Sale Offer 20% Off This Week</p>
+                                            <h1 class="main-title"><span>Amazing</span> <span th:text="${banner.title}"></span></h1>
+                                            <p class="subtitle" th:text="${banner.description}"></p>
+<!--                                            <div class="slide-button">-->
+<!--                                                <a class="default-btn" th:href="@{/list-products}" title="Shop Now">Shop Now</a>-->
+<!--                                            </div>-->
+                                        </div> <!-- end of slide-content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end of slider-inner -->
+                    </div> <!-- end of swiper-slide -->
+                </div> <!-- end of swiper-slide -->
+
+                <!-- Slider Navigation -->
+                <div class="swiper-arrow next slide"><i class="fa fa-angle-right"></i></div>
+                <div class="swiper-arrow prev slide"><i class="fa fa-angle-left"></i></div>
+
+                <!-- Slider Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+        <!-- End of Primary Slider Section -->
+
+        <!-- Start of Support Section -->
+        <section class="support-section mb0">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 feature-box">
+                        <div class="feature-content">
+                            <h2>Free Shipping</h2>
+                            <p>Free shipping on all order</p>
+                        </div>
+                    </div> <!-- end of feaure-box -->
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 feature-box">
+                        <div class="feature-content">
+                            <h2>Money Return</h2>
+                            <p>30 days for free return</p>
+                        </div>
+                    </div> <!-- end of feaure-box -->
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 feature-box">
+                        <div class="feature-content">
+                            <h2>Online Support</h2>
+                            <p>Support 24 hours a day</p>
+                        </div>
+                    </div> <!-- end of feaure-box -->
+
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-3 feature-box">
+                        <div class="feature-content">
+                            <h2>Deals &amp; Promotions</h2>
+                            <p>Price savings, discounts, coupons</p>
+                        </div>
+                    </div> <!-- end of feaure-box -->
+                </div>
+            </div>
+        </section>
+        <!-- End of Support Section -->
+
+        <!-- Start of Banner Section -->
+        <div class="banner-section mb-half">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="promo-banner hover-effect-1">
+                            <a href="#">
+                                <img th:src="@{/userAssets/images/banners/xiaomi-redmi-note-13-vang-1-1.jpg}" alt="Promo Banner">
+                            </a>
+                        </div> <!-- end of promo-banner -->
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                        <div class="promo-banner hover-effect-1">
+                            <a href="#">
+                                <img th:src="@{/userAssets/images/banners/redmi-note-13-pro-xanh-la-1.jpg}" alt="Promo Banner">
+                            </a>
+                        </div> <!-- end of promo-banner -->
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="promo-banner hover-effect-1">
+                            <a href="#">
+                                <img th:src="@{/userAssets/images/banners/samsung-galaxy-z-flip6-blue-1-1.jpg}" alt="Promo Banner">
+                            </a>
+                        </div> <!-- end of promo-banner -->
+                    </div>
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div>
+        <!-- End of Banner Section -->
+
+        <!-- Start of New Arrivals Section -->
+        <section class="new-arrivals-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="section-title">
+                            <h2>New Trending Products</h2>
+                            <p class="subtitle">Accumsan vitae pede lacus ut ullamcorper sollicitudin quisque libero est</p>
+                        </div>
+                    </div>
+                </div> <!-- end of row -->
+
+                <div class="row product-row">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="new-products pos-r">
+                            <div class="element-carousel anime-element" data-visible-slide="4" data-loop="false" data-space-between="0" data-speed="1000">
+
+                                <!-- Slides -->
+                                <div class="swiper-wrapper">
+                                    <article class="swiper-slide product-layout" th:each="proD : ${productDetails}">
+                                        <div class="product-thumb">
+                                            <div class="product-inner">
+                                                <div class="product-image">
+                                                    <div class="label-product label-sale">-20%</div>
+                                                    <div class="label-product label-new">New</div>
+                                                    <a th:href="@{'/store/product/product-detail/' + ${proD.id}}">
+                                                        <img th:src="${productImageMap[proD.id].imageUrl}" alt="Compete Track Tote" th:title="${proD.product.name}">
+                                                    </a>
+                                                    <div class="action-links">
+                                                        <a class="action-btn btn-cart" href="#" title="Add to Cart"><i class="pe-7s-shopbag"></i></a>
+                                                        <a class="action-btn btn-wishlist" href="#" title="Add to Wishlist"><i class="pe-7s-like"></i></a>
+                                                    </div>
+                                                </div> <!-- end of product-image -->
+
+                                                <div class="product-caption">
+                                                    <div class="product-meta d-flex justify-content-between align-items-center">
+                                                        <div class="product-manufacturer">
+                                                            <a href="#">Studio Design</a>
+                                                        </div>
+                                                        <div class="product-ratings">
+                                                            <div class="rating-box">
+                                                                <ul class="rating d-flex">
+                                                                    <li><i class="ion ion-md-star-outline"></i></li>
+                                                                    <li><i class="ion ion-md-star-outline"></i></li>
+                                                                    <li><i class="ion ion-md-star-outline"></i></li>
+                                                                    <li><i class="ion ion-md-star-outline"></i></li>
+                                                                    <li><i class="ion ion-md-star-outline disabled"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h4 class="product-name"><a th:href="@{'/store/product/product-detail/' + ${proD.id}}" th:text="${proD.product.name}"></a></h4>
+                                                    <p class="product-price">
+                                                        <span class="price-new" th:text="${proD.formattedPrice}"></span>
+                                                    </p>
+                                                </div><!-- end of product-caption -->
+                                            </div><!-- end of product-inner -->
+                                        </div><!-- end of product-thumb -->
+                                    </article> <!-- end of product-layout -->
+
+                                </div> <!-- end of swiper-wrapper -->
+
+                                <!-- Slider Navigation -->
+                                <div class="swiper-arrow next"><i class="fa fa-angle-right"></i></div>
+                                <div class="swiper-arrow prev"><i class="fa fa-angle-left"></i></div>
+                            </div> <!-- end of element-carousel -->
+                        </div> <!-- end of new-products -->
+                    </div>
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </section>
+        <!-- End of New Arrivals Section -->
+
+        <!-- Start of Promo Banner Section -->
+        <section class="promo-banner-section bg-img-wrapper">
+            <div class="image-placeholder pos-r">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="banner-with-text">
+                                <img th:src="@{/userAssets/images/backgrounds/bg-banner.jpg}" class="visually-hidden" alt="Promo Banner">
+                                <div class="promo-text">
+                                    <h1>Hurry Up!</h1>
+                                    <h2><span>Hurry Up!</span> Daily Deal Of The Day</h2>
+                                    <p>Abdul, a young, widowed Muslim man, needed to leave Syria and not be delayed by the authorities in getting to Europe. The best way to do this, he reasoned, was to acquire another family as cover, and he found one. It was all a sham, however, just a means to an end.</p>
+                                    <a href="#" class="default-btn large">Discover Now</a>
+                                </div>
+                            </div> <!-- end of promo-banner -->
+                        </div>
+                    </div> <!-- end of row -->
+                </div> <!-- end of container -->
+            </div> <!-- end of image-placeholder -->
+        </section>
+        <!-- End of Promo Banner Section -->
+
+
+        <!-- Start of Instagram Section -->
+        <section class="instagram-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="section-title type-2 pt-full top-bordered">
+                            <h2>Follow us On Instagram</h2>
+                            <p class="subtitle">Consequat magna, massa vel suspendisse morbi aliquam faucibus ligula ante ipsum ac nulla.</p>
+                        </div>
+                    </div>
+                </div> <!-- end of row -->
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="instagram-container">
+                            <!-- Slides -->
+                            <div id="instagram_feed" class="swiper-wrapper image-popup">
+                            </div>
+                            <!-- end of swiper-wrapper -->
+                        </div> <!-- end of instagram-carousel -->
+                        <div class="follow-link">
+                            <a href="https://www.instagram.com/themeitems/" target="_blank">Follow us On Instagram</a>
+                        </div>
+                    </div>
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </section>
+        <!-- End of Instagram Section -->
+    </main>
+    <!-- End of Main Content Wrapper -->
+
+    <!-- Start of Footer -->
+    <th:block th:replace="/user/layout/layout::footer"></th:block>
+    <!-- End of Footer -->
+
+
+    <!-- Start of Scroll to Top -->
+    <div id="to_top">
+        <i class="ion ion-ios-arrow-forward"></i>
+        <i class="ion ion-ios-arrow-forward"></i>
+    </div>
+    <!-- End of Scroll to Top -->
+</div>
+<!-- End of Whole Site Wrapper -->
+
+<!-- Initializing Photoswipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Photoswipe -->
+
+
+<!-- JS
+============================================ -->
+<th:block th:replace="/user/layout/layout::plugins-jss-link"></th:block>
+
+</body>
+
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    var categories = /*[[${categories}]]*/ [];
+    /*]]>*/
+    console.log(categories); // Now you should see the actual data
+</script>
+<!-- Mirrored from htmldemo.net/pebona/pebona/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Mar 2023 20:52:19 GMT -->
+</html>

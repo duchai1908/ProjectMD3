@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="content mt-3" th:fragment="add-banner">
+        <div class="col-lg-4" style="padding-bottom:120px">
+            <form action="/admin/banner/add" method="post" th:object="${bannerRequest}" id="form-banner-add" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Banner title</label>
+                    <input th:type="text" class="form-control" th:field="*{title}"  placeholder="Please Enter Banner title"  />
+<!--                    <span style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>-->
+                </div>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input th:type="file" id="input-image" th:field="*{image}" >
+                    <span style="color: red" th:text="${mainImageError}" ></span><br>
+                    <img id="image-banner" width="100px" src="" alt="img">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" th:field="*{description}" placeholder="Please Enter Description"></textarea>
+<!--                    <span style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>-->
+                </div>
+                <button type="submit" class="btn btn-default btn-success">Banner Add</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

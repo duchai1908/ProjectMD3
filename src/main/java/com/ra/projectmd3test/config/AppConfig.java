@@ -19,6 +19,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -135,7 +136,14 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/assets/**","/images/**","/vendors/**")
-                .addResourceLocations("classpath:/assets/","classpath:/images/","classpath:/vendors/");
+        registry.addResourceHandler("/adminAssets/**","/userAssets/**")
+                .addResourceLocations("classpath:/adminAssets/","classpath:/userAssets/");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/adminaccount/register","/adminaccount/account/list");
+        registry.addInterceptor(new OnlyAdminInterceptor()).addPathPatterns("/admin/**");
+
     }
 }

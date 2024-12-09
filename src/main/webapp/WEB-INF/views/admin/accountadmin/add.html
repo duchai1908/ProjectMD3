@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content mt-3" th:fragment="add-admin">
+    <form action="/adminaccount/register" th:object="${adminRegister}" method="post">
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control" th:field="*{name}" placeholder="Please Enter Admin Name" />
+            <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="password" th:field="*{password}" placeholder="Please Enter Admin Password" />
+            <span style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        </div>
+        <div class="form-group">
+            <label>Role</label><br>
+            <select id="category" th:field="*{role}">
+                <option value="" th:disabled selected>Select a Role</option>
+                <option th:each="role : ${adminRole}" th:value="${role.id}" th:text="${role.roleName}"></option>
+            </select><br>
+            <span style="color: red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+        </div>
+        <button type="submit" style="border-radius: 4px" class="btn btn-default btn-success">Add Admin</button>
+        <button type="reset" class="btn btn-default btn-primary">Reset</button>
+    </form>
+</div>
+</body>
+</html>

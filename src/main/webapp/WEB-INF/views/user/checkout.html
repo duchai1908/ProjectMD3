@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Mirrored from htmldemo.net/pebona/pebona/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 28 Mar 2023 20:51:52 GMT -->
+<head th:insert="/user/layout/layout::head-link">
+
+</head>
+
+<body>
+
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please upgrade your browser to improve your experience.</p>
+<![endif]-->
+
+<!-- Start of Whole Site Wrapper with mobile menu support -->
+<div id="whole" class="whole-site-wrapper">
+
+  <!-- Start of Newsletter Popup and Header -->
+
+  <th:block th:replace="/user/layout/layoutProduct::header-products"></th:block>
+  <!-- End of Breadcrumbs -->
+
+  <!-- Start of Main Content Wrapper -->
+  <div id="content" class="main-content-wrapper">
+
+    <!-- Start of Checkout Wrapper -->
+    <div class="checkout-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <main id="primary" class="site-main">
+              <form th:action="@{/}">
+                <div class="user-actions-area">
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+                      <div class="user-actions user-coupon">
+                        <h3>Have A Coupon? <span id="show_coupon">Click Here To Enter Your Code.</span></h3>
+                        <div id="checkout_coupon" class="display-content">
+                          <div class="coupon-info">
+
+                              <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6">
+                                  <div class="input-group">
+                                    <input type="text" name="coupon" value="" placeholder="Coupon Code" id="input-coupon" class="form-control me-3" required>
+                                    <input type="submit" value="Apply Coupon" id="button-coupon" class="btn btn-secondary">
+                                  </div>
+                                </div>
+                              </div>
+
+                          </div>
+                        </div>
+                      </div> <!-- end of user-actions -->
+                    </div>
+                  </div> <!-- end of row -->
+                </div> <!-- end of user-actions -->
+
+                <div class="checkout-area">
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-7">
+                      <div class="checkout-form">
+                        <div class="section-title left-aligned">
+                          <h2>Billing Details</h2>
+                        </div>
+
+
+<!--                          <div class="form-row mb-3">-->
+<!--                            <div class="form-group col-12 col-sm-12 col-md-6">-->
+<!--                              <label for="first_name">First Name <span class="text-danger">*</span></label>-->
+<!--                              <input type="text" class="form-control" id="first_name" required>-->
+<!--                            </div>-->
+<!--                            <div class="form-group col-12 col-sm-12 col-md-6">-->
+<!--                              <label for="last_name">Last Name <span class="text-danger">*</span></label>-->
+<!--                              <input type="text" class="form-control" id="last_name" required>-->
+<!--                            </div>-->
+<!--                          </div>-->
+                          <div class="form-row mb-3">
+                            <div class="form-group col-12 col-sm-12 col-md-6">
+                              <label for="company_name">Receive Name</label>
+                              <input type="text" class="form-control" id="company_name">
+                            </div>
+                            <div class="form-group col-12 col-sm-12 col-md-6">
+                              <label for="email_address">Email Address <span class="text-danger">*</span></label>
+                              <input type="email" class="form-control" id="email_address" readonly>
+                            </div>
+                          </div>
+                          <div class="form-row mb-3">
+                            <div class="form-group col-12 col-sm-12 col-md-12">
+                              <label for="p_address">Address <span class="text-danger">*</span></label>
+                              <input type="text" class="form-control" id="p_address" required>
+                            </div>
+                          </div>
+                          <div class="form-row mb-3">
+                            <div class="form-group col-12 col-sm-12 col-md-12">
+                              <label for="tel_number">Telephone <span class="text-danger">*</span></label>
+                              <input type="tel" class="form-control" id="tel_number" required>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-12 col-sm-12 col-md-12">
+                              <label for="order_notes">Order Notes</label>
+                              <textarea class="form-control" id="order_notes" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                            </div>
+                          </div>
+                      </div> <!-- end of checkout-form -->
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-5">
+                      <div class="order-summary">
+                        <div class="section-title left-aligned">
+                          <h2>Your Order</h2>
+                        </div>
+                        <div class="product-container">
+                          <div class="product-list" th:each="c: ${cartItems}">
+                            <div class="product-inner d-flex align-items-center">
+                              <div class="product-image me-4 me-sm-5 me-md-4 me-lg-5">
+                                <a href="#">
+                                  <img th:src="${productImagesMap[c.product.id]?.imageUrl}" alt="Compete Track Tote" title="Compete Track Tote">
+                                </a>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h5>Compete Track Tote</h5>
+                                <p class="product-quantity">Quantity: <span th:text="${c.quantity}"></span></p>
+                                <p class="product-final-price" th:text="${#numbers.formatDecimal(c.product.price * c.quantity, 0, 'COMMA', 0, 'POINT')}"></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div> <!-- end of product-container -->
+                        <div class="order-review">
+                          <div class="table-responsive">
+                            <table class="table table-bordered">
+                              <tbody>
+
+                              <tr class="cart-subtotal">
+                                <th>Subtotal</th>
+                                <td  id="subTotal" class="text-center" th:text="${#numbers.formatDecimal(totalPrice, 0, 'COMMA', 0, 'POINT')}">0 VND</td>
+                              </tr>
+                              <tr class="order-total">
+                                <th>Total</th>
+                                <td class="text-center"><strong><span id="total" class="color-primary" th:text="${#numbers.formatDecimal(totalPrice, 0, 'COMMA', 0, 'POINT')}">0 VND</span></strong></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="checkout-payment">
+
+                            <div class="form-row">
+                              <div class="custom-radio">
+                                <input class="form-check-input" type="radio" name="payment" id="check_payment" value="check" checked>
+                                <span class="checkmark"></span>
+                                <label class="form-check-label" for="check_payment">Check Payments</label>
+
+                                <div class="payment-info" id="check_pay">
+                                  <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                </div>
+                              </div>
+                              <div class="custom-radio">
+                                <input class="form-check-input" type="radio" name="payment" id="cash_delivery_payment" value="cash">
+                                <span class="checkmark"></span>
+                                <label class="form-check-label" for="cash_delivery_payment">Cash on Delivery</label>
+
+                                <div class="payment-info" id="cash_pay">
+                                  <p>Pay with cash upon delivery.</p>
+                                </div>
+                              </div>
+                              <div class="custom-radio">
+                                <input class="form-check-input" type="radio" name="payment" id="paypal_payment" value="paypal">
+                                <span class="checkmark"></span>
+                                <label class="form-check-label" for="paypal_payment">PayPal Express Checkout</label>
+
+                                <div class="payment-info" id="paypal_pay">
+                                  <p>Pay via PayPal. You can pay with your credit card if you don’t have a PayPal account.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="form-check">
+                                <div class="custom-checkbox">
+                                  <input class="form-check-input" type="checkbox" id="terms_acceptance" required>
+                                  <span class="checkmark"></span>
+                                  <label class="form-check-label" for="terms_acceptance">I agree to the <a href="#">terms of service</a> and will adhere to them unconditionally.</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row justify-content-end">
+                              <input type="submit" class="btn btn-secondary dark" value="Continue to Payment">
+                            </div>
+
+                        </div> <!-- end of checkout-payment -->
+                      </div> <!-- end of order-summary -->
+                    </div>
+                  </div> <!-- end of row -->
+                </div> <!-- end of checkout-area -->
+              </form>
+            </main> <!-- end of #primary -->
+          </div>
+        </div> <!-- end of row -->
+      </div> <!-- end of container -->
+    </div>
+    <!-- End of Checkout Wrapper -->
+  </div>
+  <!-- End of Main Content Wrapper -->
+
+  <!-- Start of Footer -->
+  <th:block th:replace="/user/layout/layout::footer"></th:block>
+  <!-- End of Footer -->
+
+
+
+  <!-- Start of Scroll to Top -->
+  <div id="to_top">
+    <i class="ion ion-ios-arrow-forward"></i>
+    <i class="ion ion-ios-arrow-forward"></i>
+  </div>
+  <!-- End of Scroll to Top -->
+</div>
+<!-- End of Whole Site Wrapper -->
+
+<!-- Initializing Photoswipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Photoswipe -->
+
+
+<!-- JS
+============================================ -->
+<th:block th:replace="/user/layout/layout::plugins-jss-link"></th:block>
+
+<script>
+  calculateTotal();
+  function calculateTotal() {
+    let total = 0;
+    const cartItems = document.querySelectorAll('.product-list .product-inner');
+
+    cartItems.forEach(item => {
+      const quantity = parseInt(item.querySelector('.product-quantity span').textContent, 10);
+      const price = parseFloat(item.querySelector('.product-final-price').textContent.replace(/[^0-9.-]+/g,""));
+      total +=  price;
+    });
+
+    document.getElementById('subTotal').textContent = formatCurrency(total);
+    document.getElementById('total').textContent = formatCurrency(total);
+  }
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+  }
+</script>
+</body>
+
+</html>

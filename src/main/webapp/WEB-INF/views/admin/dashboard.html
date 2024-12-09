@@ -17,15 +17,15 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/font-awesome/css/font-awesome.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/themify-icons/css/themify-icons.css}">
-    <link rel="stylesheet" th:href="@{/vendors/flag-icon-css/css/flag-icon.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/selectFX/css/cs-skin-elastic.css}">
-    <link rel="stylesheet" th:href="@{/vendors/jqvmap/dist/jqvmap.min.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/vendors/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/vendors/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/vendors/themify-icons/css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/vendors/flag-icon-css/css/flag-icon.min.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/vendors/selectFX/css/cs-skin-elastic.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/vendors/jqvmap/dist/jqvmap.min.css}">
 
 
-    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/adminAssets/assets/css/style.css}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -63,24 +63,39 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Product</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="tables-basic.html">ADD</a></li>
-                        <li><i class="fa fa-table"></i><a href="tables-data.html">LIST</a></li>
+                        <li><i class="fa fa-table"></i><a th:href="@{/admin/product/add}" >ADD</a></li>
+                        <li><i class="fa fa-table"></i><a th:href="@{/admin/product/list}" >LIST</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Size</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/size/add}">ADD</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/size/list}">LIST</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Color</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/color/add}">ADD</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/color/list}">LIST</a></li>
                     </ul>
                 </li>
 
-                <h3 class="menu-title">Icons</h3><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Banner</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                        <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/banner/add}">ADD</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a th:href="@{/admin/banner/list}">LIST</a></li>
+                    </ul>
+                </li>
+
+                <h3 class="menu-title">Account</h3><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Admin</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-map-o"></i><a th:href="@{/adminaccount/register}">ADD</a></li>
+                        <li><i class="menu-icon fa fa-street-view"></i><a th:href="@{/adminaccount/account/list}">LIST</a></li>
                     </ul>
                 </li>
                 <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
@@ -200,7 +215,7 @@
 
                         <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
-                        <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        <a class="nav-link" th:href="@{/loginadmin/logout}"><i class="fa fa-power-off"></i> Logout</a>
                     </div>
                 </div>
 
@@ -252,6 +267,19 @@
     <th:block th:switch="${viewName}">
         <div class="content mt-3" th:case="list-category" th:insert="~{/admin/category/list :: list-category}"></div>
         <div class="content mt-3" th:case="add-category" th:insert="~{/admin/category/add :: add-category}"></div>
+        <div class="content mt-3" th:case="list-size" th:insert="~{/admin/size/list :: list-size}"></div>
+        <div class="content mt-3" th:case="add-size" th:insert="~{/admin/size/add :: add-size}"></div>
+        <div class="content mt-3" th:case="list-color" th:insert="~{/admin/color/list :: list-color}"></div>
+        <div class="content mt-3" th:case="add-color" th:insert="~{/admin/color/add :: add-color}"></div>
+        <div class="content mt-3" th:case="list-product" th:insert="~{/admin/product/list :: list-product}"></div>
+        <div class="content mt-3" th:case="add-product" th:insert="~{/admin/product/add :: add-product}"></div>
+        <div class="content mt-3" th:case="edit-product" th:insert="~{/admin/product/edit :: edit-product}"></div>
+        <div class="content mt-3" th:case="list-productdetail" th:insert="~{/admin/productdetail/list :: list-productdetail}"></div>
+        <div class="content mt-3" th:case="list-banner" th:insert="~{/admin/banner/list :: list-banner}"></div>
+        <div class="content mt-3" th:case="add-banner" th:insert="~{/admin/banner/add :: add-banner}"></div>
+        <div class="content mt-3" th:case="add-adminregister" th:insert="~{/admin/accountadmin/add :: add-admin}"></div>
+        <div class="content mt-3" th:case="account-list" th:insert="~{/admin/accountadmin/list :: list-admin}"></div>
+
     </th:block>
 
     <!-- END MAIN-->
@@ -260,19 +288,19 @@
 
 <!-- Right Panel -->
 
-<script th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
-<script th:src="@{/vendors/popper.js/dist/umd/popper.min.js}"></script>
-<script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
-<script th:src="@{/assets/js/main.js}"></script>
-<script th:src="@{/assets/js/main-js/category.js}"></script>
+<script th:src="@{/adminAssets/vendors/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/adminAssets/vendors/popper.js/dist/umd/popper.min.js}"></script>
+<script th:src="@{/adminAssets/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/adminAssets/assets/js/main.js}"></script>
+<script th:src="@{/adminAssets/assets/js/main-js/category.js}"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script th:src="@{/vendors/chart.js/dist/Chart.bundle.min.js}"></script>
-<script th:src="@{/assets/js/dashboard.js}"></script>
-<script th:src="@{/assets/js/widgets.js}"></script>
-<script th:src="@{/vendors/jqvmap/dist/jquery.vmap.min.js}"></script>
-<script th:src="@{/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js}"></script>
-<script th:src="@{/vendors/jqvmap/dist/maps/jquery.vmap.world.js}"></script>
+<script th:src="@{/adminAssets/vendors/chart.js/dist/Chart.bundle.min.js}"></script>
+<script th:src="@{/adminAssets/assets/js/dashboard.js}"></script>
+<script th:src="@{/adminAssets/assets/js/widgets.js}"></script>
+<script th:src="@{/adminAssets/vendors/jqvmap/dist/jquery.vmap.min.js}"></script>
+<script th:src="@{/adminAssets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js}"></script>
+<script th:src="@{/adminAssets/vendors/jqvmap/dist/maps/jquery.vmap.world.js}"></script>
 <script>
     (function($) {
         "use strict";

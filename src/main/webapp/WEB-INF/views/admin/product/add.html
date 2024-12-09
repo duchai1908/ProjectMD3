@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="content mt-3" th:fragment="add-product">
+        <div class="col-lg-4" style="padding-bottom:120px">
+            <form action="/admin/product/add" method="post" th:object="${productRequest}" id="form-product-add" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Product name</label>
+                    <input th:type="text" class="form-control" th:field="*{name}"  placeholder="Please Enter Product name"  />
+                    <span style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                </div>
+                <div class="form-group">
+                    <label>Category</label><br>
+                    <select id="category" th:field="*{category_id}">
+                        <option value="" th:disabled selected>Select a category</option>
+                        <option th:each="cate : ${listCate}" th:value="${cate.id}" th:text="${cate.name}"></option>
+                    </select><br>
+                    <span style="color: red" th:if="${#fields.hasErrors('category_id')}" th:errors="*{category_id}"></span>
+                </div>
+                <div class="form-group">
+                    <label>Image</label>
+                    <input th:type="file" id="input-image" th:field="*{mainImage}" >
+                    <span style="color: red" th:text="${mainImageError}" ></span><br>
+                    <img id="image-product" width="100px" src="" alt="img">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" th:field="*{description}" placeholder="Please Enter Description"></textarea>
+                    <span style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                </div>
+                <button type="submit" class="btn btn-default btn-success">Product Add</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+                <form>
+        </div>
+    </div>
+</body>
+</html>

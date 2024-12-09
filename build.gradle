@@ -26,7 +26,7 @@ dependencies {
 
   //spring-mvc
   implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.18'
-  //mysql connecter java
+  //mysql connector java
   implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
   // lombok
   compileOnly 'org.projectlombok:lombok:1.18.32'
